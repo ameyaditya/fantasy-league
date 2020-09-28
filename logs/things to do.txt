@@ -1,0 +1,5 @@
+1. Login and sign up pages [DONE]
+2. scrape teams data and photos [DONE]
+3. create tables [DONE]
+4. get Schedule [DONE]
+5. Load player [DONE]

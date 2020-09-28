@@ -1,0 +1,37 @@
+user - user_ID, username, password, activated, points, deleted, current_bet_ID
+
+team - team_ID, team_name
+
+team_member - member_ID, member_name, photo_link, team_ID
+
+ipl_schedule - schedule_ID, team1_ID, team2_ID, scheduled_date, deadline
+
+ipl_scheduled_points - ISP_ID, schedule_ID, member_ID, points
+
+bet - bet_ID, user_ID, schedule_ID, for_team_ID, placed_at, points_won
+
+bet_on_person - bp_ID, bet_ID, member_ID
+
+
+registration - sign up -> wait for admin to approve -> login
+place bet - login -> choose the match -> choose a team -> choose 5 players -> lock -> wait for results
+
+admin
+1.approve new users
+2.update scores
+
+
+isp table
+
+at 4:00 AM, scrape the IPL website and get the players points update isp table
+
+update the points only for live schedules 
+
+
+at 4:00 AM 
+users can place bet from 4:00AM - t(-30)
+1. scrape ipl website and get updated point values 
+updated points = scraped points - player's total points {DONE}
+2. fill points inside bet table points values
+3. update user's total points
+4. deactivate old schedule and actiavte next schedule

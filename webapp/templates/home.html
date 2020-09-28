@@ -1,0 +1,821 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <!--===============================================================================================-->
+    <!-- <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/> -->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <!--===============================================================================================-->
+    <style>
+        .logo {
+            height: 220px;
+            width: 220px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            border: 5px solid #d5d5d5;
+            margin: auto;
+        }
+
+        .tname {
+            text-align: center !important;
+            width: 100%;
+            font-size: 40px;
+            margin: auto;
+        }
+
+        .bet-placement-container {
+            box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.2);
+            margin-top: 70px;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .team-names-row {
+            margin-top: 18px;
+        }
+
+        .deadline-text {
+            text-align: center;
+            margin: auto;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: red;
+            text-transform: none !important;
+        }
+
+        .bet-description-column {
+            position: relative;
+        }
+
+        .bet-button-row {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+        }
+
+        .bet-button {
+            width: 50%;
+            margin: auto;
+        }
+
+        .bet-button:hover {
+            background-color: #1a408d !important;
+        }
+
+        #smaller-bet-container {
+            display: none;
+        }
+
+        #already-placed-bet-mobile {
+            display: none;
+        }
+
+        @media only screen and (min-width: 200px) and (max-width: 1024px) {
+            #smaller-bet-container {
+                display: block;
+            }
+
+            #larger-bet-container {
+                display: none;
+            }
+
+            #already-placed-bet-mobile {
+                display: block;
+            }
+
+            #already-placed-bet-laptop {
+                display: none;
+            }
+
+            .logo {
+                height: 150px;
+                width: 150px;
+            }
+
+            .tname {
+                font-size: 30px;
+                text-align: center;
+            }
+
+            .bet-button-row {
+                bottom: 5px;
+            }
+
+            .team-names-row {
+                margin-top: 8px;
+            }
+
+            .bet-description-column {
+                height: 180px;
+                margin-top: 10px;
+            }
+        }
+
+        @media only screen and (min-width: 1024px) {
+            #smaller-bet-container {
+                display: none;
+            }
+
+            #already-placed-bet-mobile {
+                display: none;
+            }
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {}
+
+        .player-card-container {
+            box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .player-name {
+            text-align: center;
+            font-size: 0.8em !important;
+            width: 100%;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .player-image {
+            background-position: center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 150px;
+            width: 100%;
+        }
+
+        .user-icon {
+            height: 50px;
+            width: 50px;
+            margin: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            border-radius: 50%;
+            box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .rank_number {
+            text-align: center;
+            font-size: 1.4em;
+            margin-top: 10px;
+        }
+
+        .user-name {
+            margin-top: 5px;
+            text-transform: lowercase;
+            padding-left: 20px;
+            font-size: 1.5em;
+        }
+
+        .user-points {
+            margin-top: 9px;
+            font-size: 1.5em;
+            text-align: right;
+            padding-right: 30px;
+        }
+
+        .user-row {
+            margin-bottom: 20px;
+        }
+
+        .leaderboard-container {
+            margin-top: 20px !important;
+        }
+
+        .points-div {
+            padding-right: 30px;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        .name-div,
+        .rank-div {
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+        .leaderboard-heading{
+            font-size: 1.9em;
+            color: black;
+        }
+        .table-heading{
+            margin-top: 20px;
+        }
+        .logout-button{
+            position: fixed;
+            right: 10px;
+            top: 10px;
+            width: 100px;
+            height: 40px;
+            z-index: 999;
+        }
+    </style>
+</head>
+
+
+<body>
+    <button class="btn btn-danger logout-button" onclick="logout()">LOGOUT</button>
+    <div class="todays-bet-container"></div>
+
+    <!-- <div class="container bet-placement-container" id="already-placed-bet-laptop">
+        <div class="row">
+            <div class="col-12 col-lg-3">
+                <div class="logo" style="background-image: url('/static/images/logos/dc.png');">
+
+                </div>
+            </div>
+            <div class="col-12 col-lg-9">
+                <div class="container-fluid">
+                    <h3 class="txt3 custom-heading text-center">Your Fantasy Team</h3>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <div class=" player-card-container">
+                                <div class="row player-image-row">
+                                    <div class="player-image"
+                                        style="background-image: url('/static/images/teams/CSK/Ambati Rayudu.png');">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p class="txt3 player-name">Ambati Rayudu</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class=" player-card-container">
+                                <div class="row player-image-row">
+                                    <div class="player-image"
+                                        style="background-image: url('/static/images/teams/CSK/Ambati Rayudu.png');">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p class="txt3 player-name">Ambati Rayudu</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class=" player-card-container">
+                                <div class="row player-image-row">
+                                    <div class="player-image"
+                                        style="background-image: url('/static/images/teams/CSK/Ambati Rayudu.png');">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p class="txt3 player-name">Ambati Rayudu</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class=" player-card-container">
+                                <div class="row player-image-row">
+                                    <div class="player-image"
+                                        style="background-image: url('/static/images/teams/CSK/Ambati Rayudu.png');">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p class="txt3 player-name">Ambati Rayudu</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class=" player-card-container">
+                                <div class="row player-image-row">
+                                    <div class="player-image"
+                                        style="background-image: url('/static/images/teams/CSK/Ambati Rayudu.png');">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p class="txt3 player-name">Ambati Rayudu</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container bet-placement-container" id="already-placed-bet-mobile">
+        <h3 class="txt3 custom-heading text-center">Your Fantasy Team</h3>
+        <div class="row mt-3">
+            <div class="col-6">
+                <div class="logo" style="background-image: url('/static/images/logos/dc.png');">
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class=" player-card-container">
+                    <div class="row player-image-row">
+                        <div class="player-image"
+                            style="background-image: url('/static/images/teams/CSK/Ambati Rayudu.png');">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="txt3 player-name">Ambati Rayudu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class=" player-card-container">
+                    <div class="row player-image-row">
+                        <div class="player-image"
+                            style="background-image: url('/static/images/teams/CSK/Ambati Rayudu.png');">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="txt3 player-name">Ambati Rayudu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class=" player-card-container">
+                    <div class="row player-image-row">
+                        <div class="player-image"
+                            style="background-image: url('/static/images/teams/CSK/Ambati Rayudu.png');">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="txt3 player-name">Ambati Rayudu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class=" player-card-container">
+                    <div class="row player-image-row">
+                        <div class="player-image"
+                            style="background-image: url('/static/images/teams/CSK/Ambati Rayudu.png');">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="txt3 player-name">Ambati Rayudu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class=" player-card-container">
+                    <div class="row player-image-row">
+                        <div class="player-image"
+                            style="background-image: url('/static/images/teams/CSK/Ambati Rayudu.png');">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="txt3 player-name">Ambati Rayudu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> -->
+    <!-- <div class="container bet-placement-container" id="smaller-bet-container">
+        <div class="row">
+            <div class="col-6">
+                <div class="logo" style="background-image: url('/static/images/logos/dc.png');">
+
+                </div>
+
+            </div>
+            <div class="col-6">
+                <div class="logo" style="background-image: url('/static/images/logos/rcb.png');">
+
+                </div>
+
+            </div>
+            <div class="col-1"></div>
+            <div class="col-10 bet-description-column">
+                <div class="row team-names-row">
+                    <div class="col-4">
+                        <p class="tname txt3">csk</p>
+                    </div>
+                    <div class="col-4">
+                        <p class="tname txt3">vs</p>
+                    </div>
+                    <div class="col-4">
+                        <p class="tname txt3">csk</p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <p class="deadline-text mt-3 txt2">Before 7:00PM</p>
+                </div>
+                <div class="row bet-button-row">
+                    <button class="login100-form-btn bet-button">
+                        BET NOW!
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container bet-placement-container" id="larger-bet-container">
+        <div class="row">
+            <div class="col-3">
+                <div class="logo" style="background-image: url('/static/images/logos/dc.png');">
+
+                </div>
+
+            </div>
+            <div class="col-6 bet-description-column">
+                <div class="row team-names-row">
+                    <div class="col-4">
+                        <p class="tname txt3">csk</p>
+                    </div>
+                    <div class="col-4">
+                        <p class="tname txt3">vs</p>
+                    </div>
+                    <div class="col-4">
+                        <p class="tname txt3">csk</p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <p class="deadline-text mt-3 txt2">Before 7:00PM</p>
+                </div>
+                <div class="row bet-button-row">
+                    <button class="login100-form-btn bet-button">
+                        BET NOW!
+                    </button>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="logo" style="background-image: url('/static/images/logos/rcb.png');">
+
+                </div>
+
+            </div>
+        </div>
+    </div> -->
+    <h4 class="display-4 h4 text-center mt-5 mb-1 leaderboard-heading txt2">LEADERBOARD</h4>
+    <div class="container bet-placement-container table-heading">
+        <div class="row">
+            <div class="col-2">
+                <div class="rank-div text-center txt3">RANK</div>
+            </div>
+            <div class="col-7">
+                <div class="name-div text-center txt3">NAME</div>
+            </div>
+            <div class="col-3">
+                <div class="points-div text-right txt3">POINTS</div>
+            </div>
+        </div>
+    </div>
+    <div class="container bet-placement-container mb-5 leaderboard-container">
+        <!-- <div class="row user-row">
+            <div class="col-2">
+                <div class="rank_number txt3">1</div>
+            </div>
+            <div class="col-2">
+                <div class="user-icon-container">
+                    <div class="user-icon" style="background-image: url('/static/images/icons/52.png');">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="user-name txt3">
+                    Ani
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="user-points txt3">
+                    10.0
+                </div>
+            </div>
+        </div> -->
+
+    </div>
+</body>
+<!--===============================================================================================-->
+<script src="/static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="/static/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="/static/vendor/bootstrap/js/popper.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="/static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="/static/vendor/daterangepicker/moment.min.js"></script>
+<script src="/static/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="/static/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="/static/js/main.js"></script>
+
+<script>
+    $(document).ready(function () {
+        d = {};
+        $.ajax({
+            type: "POST",
+            url: "/home_ajax",
+            dataType: 'Json',
+            contentType: 'application/json',
+            data: JSON.stringify(d),
+            processData: false,
+            success: function (obj) {
+                if (obj['status_code'] == 200) {
+                    final_data = ``;
+                    for (i = 0; i < obj['data'].length; i++) {
+                        if (obj['data'][i]['placed']) {
+                            data = `
+                            <div class="container bet-placement-container" id="already-placed-bet-laptop">
+                                <div class="row">
+                                    <div class="col-12 col-lg-3">
+                                        <div class="logo" style="background-image: url('/static/images/logos/`+ obj['data'][i]['data'][0]['team_code'].toLowerCase() + `.png');">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-9">
+                                        <div class="container-fluid">
+                                            <h3 class="txt3 custom-heading text-center">Your Fantasy Team</h3>
+                                            <div class="row mt-4">`;
+                            for (j = 0; j < obj['data'][i]['data'].length; j++) {
+                                data += `
+                                <div class="col">
+                                    <div class=" player-card-container">
+                                        <div class="row player-image-row">
+                                            <div class="player-image"
+                                                style="background-image: url('/static/images/teams/`+ obj['data'][i]['data'][0]['team_code'] + `/` + obj['data'][i]['data'][j]['member_name'] + `.png');">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <p class="txt3 player-name">`+ obj['data'][i]['data'][j]['member_name'] + `</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                `;
+                            }
+                            data += `</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="container bet-placement-container" id="already-placed-bet-mobile">
+                                <h3 class="txt3 custom-heading text-center">Your Fantasy Team</h3>
+                                <div class="row mt-3">
+                                    <div class="col-6">
+                                        <div class="logo" style="background-image: url('/static/images/logos/`+ obj['data'][i]['data'][0]['team_code'].toLowerCase() + `.png');">
+
+                                        </div>
+                                    </div>`;
+                            for (j = 0; j < obj['data'][i]['data'].length; j++) {
+                                data += `
+                                        <div class="col-6">
+                                            <div class=" player-card-container">
+                                                <div class="row player-image-row">
+                                                    <div class="player-image"
+                                                        style="background-image: url('/static/images/teams/`+ obj['data'][i]['data'][0]['team_code'] + `/` + obj['data'][i]['data'][j]['member_name'] + `.png');">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <p class="txt3 player-name">`+ obj['data'][i]['data'][j]['member_name'] + `</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        `;
+                            }
+                            data += `</div>
+
+                            </div>
+                            `;
+                        }
+                        else {
+                            if (obj['data'][i]['finished'] == true) {
+                                x = obj['data'][i]['deadline'].split(" ");
+                                data = `
+                                <div class="container bet-placement-container" id="smaller-bet-container">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="logo" style="background-image: url('/static/images/logos/`+ obj['data'][i]['team1_code'].toLowerCase() + `.png');">
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="logo" style="background-image: url('/static/images/logos/`+ obj['data'][i]['team2_code'].toLowerCase() + `.png');">
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-1"></div>
+                                        <div class="col-10 bet-description-column">
+                                            <div class="row team-names-row">
+                                                <div class="col-4">
+                                                    <p class="tname txt3">`+ obj['data'][i]['team1_code'].toUpperCase() + `</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="tname txt3">vs</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="tname txt3">`+ obj['data'][i]['team2_code'].toUpperCase() + `</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <p class="deadline-text mt-3 txt2">Time Up!!!</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="container bet-placement-container" id="larger-bet-container">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <div class="logo" style="background-image: url('/static/images/logos/`+ obj['data'][i]['team1_code'].toLowerCase() + `.png');">
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-6 bet-description-column">
+                                            <div class="row team-names-row">
+                                                <div class="col-4">
+                                                    <p class="tname txt3">`+ obj['data'][i]['team1_code'].toUpperCase() + `</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="tname txt3">vs</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="tname txt3">`+ obj['data'][i]['team2_code'].toUpperCase() + `</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <p class="deadline-text mt-3 txt2">Time Up!!!</p>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="logo" style="background-image: url('/static/images/logos/`+ obj['data'][i]['team2_code'].toLowerCase() + `.png');">
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                `;
+                            }
+                            else {
+                                x = obj['data'][i]['deadline'].split(" ");
+                                data = `
+                                    <div class="container bet-placement-container" id="smaller-bet-container">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="logo" style="background-image: url('/static/images/logos/`+ obj['data'][i]['team1_code'].toLowerCase() + `.png');">
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="logo" style="background-image: url('/static/images/logos/`+ obj['data'][i]['team2_code'].toLowerCase() + `.png');">
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-1"></div>
+                                            <div class="col-10 bet-description-column">
+                                                <div class="row team-names-row">
+                                                    <div class="col-4">
+                                                        <p class="tname txt3">`+ obj['data'][i]['team1_code'].toUpperCase() + `</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <p class="tname txt3">vs</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <p class="tname txt3">`+ obj['data'][i]['team2_code'].toUpperCase() + `</p>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <p class="deadline-text mt-3 txt2">Before `+ x[x.length - 1] + `</p>
+                                                </div>
+                                                <div class="row bet-button-row">
+                                                    <button class="login100-form-btn bet-button" type="button" onclick="placebet(`+ obj['data'][i]['schedule_ID'] + `)">
+                                                        BET NOW!
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="container bet-placement-container" id="larger-bet-container">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="logo" style="background-image: url('/static/images/logos/`+ obj['data'][i]['team1_code'].toLowerCase() + `.png');">
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-6 bet-description-column">
+                                                <div class="row team-names-row">
+                                                    <div class="col-4">
+                                                        <p class="tname txt3">`+ obj['data'][i]['team1_code'].toUpperCase() + `</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <p class="tname txt3">vs</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <p class="tname txt3">`+ obj['data'][i]['team2_code'].toUpperCase() + `</p>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <p class="deadline-text mt-3 txt2">Before `+ x[x.length - 1] + `</p>
+                                                </div>
+                                                <div class="row bet-button-row">
+                                                    <button class="login100-form-btn bet-button" type="button" onclick="placebet(`+ obj['data'][i]['schedule_ID'] + `)">
+                                                        BET NOW!
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="logo" style="background-image: url('/static/images/logos/`+ obj['data'][i]['team2_code'].toLowerCase() + `.png');">
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    `;
+                            }
+
+                        }
+                        final_data += data;
+                    }
+                }
+                $('.todays-bet-container').html(final_data);
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "/get_leaderboard_ajax",
+            dataType: 'Json',
+            contentType: 'application/json',
+            data: JSON.stringify(d),
+            processData: false,
+            success: function (obj) {
+                if (obj['status_code'] == 200) {
+                    final_leaderboard_data = ``;
+                    for (i = 0; i < obj['data'].length; i++) {
+                        data = `
+                        <div class="row user-row">
+                            <div class="col-2">
+                                <div class="rank_number txt3">`+ (i + 1) + `</div>
+                            </div>
+                            <div class="col-2">
+                                <div class="user-icon-container">
+                                    <div class="user-icon" style="background-image: url('/static/images/icons/`+ obj['data'][i]['icon_ID'] + `.png');">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="user-name txt3">
+                                    `+ obj['data'][i]['username'] + `
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="user-points txt3">
+                                    `+ obj['data'][i]['points'] + `
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                        final_leaderboard_data += data;
+                    }
+                    $('.leaderboard-container').html(final_leaderboard_data);
+                }
+            }
+        });
+    });
+    function placebet(schedule_id) {
+        localStorage.setItem('schedule_id', schedule_id);
+        window.location.href = "/bet";
+    }
+    function logout(){
+        window.location.href = '/logout';
+    }
+</script>
+
+</html>
